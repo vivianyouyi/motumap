@@ -1,0 +1,35 @@
+//
+//  PrefixHeader.pch
+//  MAMapKit_2D_Demo
+//
+//  Created by shaobin on 16/8/9.
+//  Copyright © 2016年 Autonavi. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+#define kScreenWidth [UIScreen mainScreen].bounds.size.width
+#define kScreenHeight [UIScreen mainScreen].bounds.size.height
+//动态适配计算
+#define DYNAMICFITCOUNT(number) kScreenWidth*number*1.0/720
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+#import <AMapFoundationKit/AMapFoundationKit.h>
+#import <MAMapKit/MAMapKit.h>
+#import <AMapSearchKit/AMapSearchKit.h>
+#import "APIKey.h"
+#import "RouteCommon.h"
+
+#import <Foundation/Foundation.h>
+#import "UIColor+Extension.h"
+#import "MoGlobalColor.h"
+#import "UILabel+ContentSize.h"
+#import "UIColor+Extension.h"
+#import "NSString+Extension.h"
+#import "MoGlobal.h"
+#import "MoUserModel.h"
+
+#endif /* PrefixHeader_pch */
