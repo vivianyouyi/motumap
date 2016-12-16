@@ -31,5 +31,6 @@
 #import "NSString+Extension.h"
 #import "MoGlobal.h"
 #import "MoUserModel.h"
+#import "UIViewExt.h"
 
 #endif /* PrefixHeader_pch */

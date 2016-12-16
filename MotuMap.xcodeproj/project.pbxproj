@@ -295,6 +295,8 @@
 		C93634C41E03D3B6006F330F /* UIView+UIViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C93634C01E03D3B6006F330F /* UIView+UIViewController.m */; };
 		C93634CE1E03D452006F330F /* MoUserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C93634C61E03D452006F330F /* MoUserModel.m */; };
 		C93634D51E03D5F4006F330F /* WelcomeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C93634D41E03D5F4006F330F /* WelcomeVC.m */; };
+		C93634E11E041579006F330F /* TestVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C93634E01E041579006F330F /* TestVC.m */; };
+		C93634E51E041592006F330F /* UIViewExt.m in Sources */ = {isa = PBXBuildFile; fileRef = C93634E41E041592006F330F /* UIViewExt.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -674,6 +676,10 @@
 		C93634C91E03D452006F330F /* MoGlobalColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoGlobalColor.h; sourceTree = "<group>"; };
 		C93634D31E03D5F4006F330F /* WelcomeVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WelcomeVC.h; sourceTree = "<group>"; };
 		C93634D41E03D5F4006F330F /* WelcomeVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WelcomeVC.m; sourceTree = "<group>"; };
+		C93634DF1E041579006F330F /* TestVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestVC.h; sourceTree = "<group>"; };
+		C93634E01E041579006F330F /* TestVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestVC.m; sourceTree = "<group>"; };
+		C93634E31E041592006F330F /* UIViewExt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIViewExt.h; sourceTree = "<group>"; };
+		C93634E41E041592006F330F /* UIViewExt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIViewExt.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -737,6 +743,8 @@
 		19D2EECC1D59C2920039B22A /* motu */ = {
 			isa = PBXGroup;
 			children = (
+				C93634E21E041584006F330F /* library */,
+				C93634DE1E04156B006F330F /* map */,
 				C93634D21E03D582006F330F /* Login */,
 				C93634D11E03D566006F330F /* Welcome */,
 				C93634B61E03D378006F330F /* Common */,
@@ -1561,6 +1569,24 @@
 			name = Login;
 			sourceTree = "<group>";
 		};
+		C93634DE1E04156B006F330F /* map */ = {
+			isa = PBXGroup;
+			children = (
+				C93634DF1E041579006F330F /* TestVC.h */,
+				C93634E01E041579006F330F /* TestVC.m */,
+			);
+			name = map;
+			sourceTree = "<group>";
+		};
+		C93634E21E041584006F330F /* library */ = {
+			isa = PBXGroup;
+			children = (
+				C93634E31E041592006F330F /* UIViewExt.h */,
+				C93634E41E041592006F330F /* UIViewExt.m */,
+			);
+			name = library;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1759,6 +1785,7 @@
 				B6108EDE1D5C899200C359A7 /* BusStopDetailViewController.m in Sources */,
 				B6108EF11D5C899200C359A7 /* GeoViewController.m in Sources */,
 				B6108FB01D62BA2D00C359A7 /* OperateMapViewController.m in Sources */,
+				C93634E51E041592006F330F /* UIViewExt.m in Sources */,
 				B6108F101D5C899200C359A7 /* UserLocationViewController.m in Sources */,
 				81150FFC1D7D578D00C301F9 /* RoutePOIDetailViewController.m in Sources */,
 				B6108F6D1D5D817600C359A7 /* CustomAnnotationView2.m in Sources */,
@@ -1842,6 +1869,7 @@
 				B6108C741D5C7D2100C359A7 /* ALView+PureLayout.m in Sources */,
 				B6108F731D5DA22600C359A7 /* RoutePlanWalkViewController.m in Sources */,
 				B6108F921D5DB51900C359A7 /* RouteShareViewController.m in Sources */,
+				C93634E11E041579006F330F /* TestVC.m in Sources */,
 				B6108F931D5DB51900C359A7 /* ShareSearchBaseViewController.m in Sources */,
 				B6108EEB1D5C899200C359A7 /* SubPoiDetailViewController.m in Sources */,
 				B675DEDE1D6EA3DC00362D62 /* WeatherViewController.m in Sources */,

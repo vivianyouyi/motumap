@@ -7,9 +7,10 @@
 //
 
 #import "WelcomeVC.h"
+#import "TestVC.h"
 
 @interface WelcomeVC ()<UIScrollViewDelegate>
-
+@property(nonatomic,strong)UIButton *aioButton;
 @end
 
 @implementation WelcomeVC
@@ -39,6 +40,19 @@
             imageView.image = image;
             imageView.contentMode = UIViewContentModeScaleAspectFit;
             [_scrollView addSubview:imageView];
+            
+            self.aioButton = [UIButton buttonWithType:UIButtonTypeCustom];
+            self.aioButton.frame = CGRectMake((kScreenWidth - DYNAMICFITCOUNT(215))/2,imageView.bottom,DYNAMICFITCOUNT(215),35);
+            self.aioButton.layer.backgroundColor =Cor3.CGColor;
+            self.aioButton.layer.masksToBounds = YES;
+            self.aioButton.layer.cornerRadius = 4;
+            [self.aioButton setTitle:@"start" forState:UIControlStateNormal];
+            [self.aioButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+            self.aioButton.titleLabel.font = [UIFont systemFontOfSize:Size4];
+            self.aioButton.titleLabel.textAlignment = NSTextAlignmentCenter;
+            [self.aioButton  addTarget:self action:@selector(startClick:) forControlEvents:UIControlEventTouchUpInside];
+            [_scrollView addSubview:self.aioButton];
+            
         }else if (i == 1){
             UIImage *image = [UIImage imageNamed:[NSString stringWithFormat:@"aio_%d.png",i+1]];
             UIImageView *imageView= [[UIImageView alloc]initWithFrame:CGRectMake(kScreenWidth * i,0,kScreenWidth,kScreenWidth/0.864)];
@@ -75,7 +89,15 @@
     UIPageControl *page = (UIPageControl *)[self.view viewWithTag:201];
     page.currentPage = current;
 }
-
+//点击
+-(void)startClick:(UIButton*)button{
+    NSLog(@"点击start");
+    
+    TestVC *subViewController = [[TestVC alloc] init];
+    subViewController.title = @"test";
+    [self.navigationController pushViewController:subViewController animated:YES];
+    
+}
 -(void)createUI{
     
     UIButton *loginButton = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -91,13 +113,13 @@
 }
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 @end
