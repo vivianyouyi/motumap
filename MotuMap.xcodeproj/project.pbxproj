@@ -13,6 +13,8 @@
 		19D2EED81D59C2920039B22A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 19D2EED61D59C2920039B22A /* Main.storyboard */; };
 		19D2EEDA1D59C2920039B22A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 19D2EED91D59C2920039B22A /* Assets.xcassets */; };
 		19D2EEDD1D59C2920039B22A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 19D2EEDB1D59C2920039B22A /* LaunchScreen.storyboard */; };
+		5EA9F6AC1E044BB2002983FE /* AMapLocationKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5EA9F6AB1E044BB2002983FE /* AMapLocationKit.framework */; };
+		5EA9F6AF1E044CCA002983FE /* MainPageVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EA9F6AE1E044CCA002983FE /* MainPageVC.m */; };
 		6A1CEFB81DF5A87C00DB1447 /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A1CEFB71DF5A87C00DB1447 /* JavaScriptCore.framework */; };
 		81150FF61D7D1FDD00C301F9 /* PoiSearchWithRouteController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81150FF51D7D1FDD00C301F9 /* PoiSearchWithRouteController.m */; };
 		81150FF91D7D240500C301F9 /* RoutePOIAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 81150FF81D7D240500C301F9 /* RoutePOIAnnotation.m */; };
@@ -310,6 +312,9 @@
 		19D2EED91D59C2920039B22A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		19D2EEDC1D59C2920039B22A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		19D2EEDE1D59C2920039B22A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5EA9F6AB1E044BB2002983FE /* AMapLocationKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AMapLocationKit.framework; path = Frameworks/AMapLocationKit.framework; sourceTree = "<group>"; };
+		5EA9F6AD1E044CCA002983FE /* MainPageVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainPageVC.h; sourceTree = "<group>"; };
+		5EA9F6AE1E044CCA002983FE /* MainPageVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainPageVC.m; sourceTree = "<group>"; };
 		6A1CEFB71DF5A87C00DB1447 /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		81150FF41D7D1FDD00C301F9 /* PoiSearchWithRouteController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PoiSearchWithRouteController.h; sourceTree = "<group>"; };
 		81150FF51D7D1FDD00C301F9 /* PoiSearchWithRouteController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PoiSearchWithRouteController.m; sourceTree = "<group>"; };
@@ -687,6 +692,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5EA9F6AC1E044BB2002983FE /* AMapLocationKit.framework in Frameworks */,
 				6A1CEFB81DF5A87C00DB1447 /* JavaScriptCore.framework in Frameworks */,
 				B61084CD1D59F43500C359A7 /* libc++.tbd in Frameworks */,
 				B61084BF1D59DA0400C359A7 /* libz.tbd in Frameworks */,
@@ -960,6 +966,7 @@
 		B61084A11D59D72800C359A7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5EA9F6AB1E044BB2002983FE /* AMapLocationKit.framework */,
 				6A1CEFB71DF5A87C00DB1447 /* JavaScriptCore.framework */,
 				8156CD691D94E3330022C0FC /* Security.framework */,
 				B61084CC1D59F43500C359A7 /* libc++.tbd */,
@@ -1574,6 +1581,8 @@
 			children = (
 				C93634DF1E041579006F330F /* TestVC.h */,
 				C93634E01E041579006F330F /* TestVC.m */,
+				5EA9F6AD1E044CCA002983FE /* MainPageVC.h */,
+				5EA9F6AE1E044CCA002983FE /* MainPageVC.m */,
 			);
 			name = map;
 			sourceTree = "<group>";
@@ -1636,6 +1645,7 @@
 				TargetAttributes = {
 					19D2EEC91D59C2920039B22A = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = YNXPYRC5CR;
 						ProvisioningStyle = Automatic;
 					};
 					8156CD4D1D94DD8F0022C0FC = {
@@ -1831,6 +1841,7 @@
 				B6108EF01D5C899200C359A7 /* WalkingDetailViewController.m in Sources */,
 				B6108EEA1D5C899200C359A7 /* StreetNumberDetailViewController.m in Sources */,
 				B6108ED81D5C899200C359A7 /* MultiMapViewController.m in Sources */,
+				5EA9F6AF1E044CCA002983FE /* MainPageVC.m in Sources */,
 				B6108F0B1D5C899200C359A7 /* MANaviAnnotation.m in Sources */,
 				B675DEE51D6EA42000362D62 /* MAWeatherLiveView.m in Sources */,
 				81150FF91D7D240500C301F9 /* RoutePOIAnnotation.m in Sources */,
@@ -2102,7 +2113,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = YNXPYRC5CR;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Frameworks",
@@ -2112,7 +2123,7 @@
 				INFOPLIST_FILE = MAMapKit_2D_Demo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.motu.map;
+				PRODUCT_BUNDLE_IDENTIFIER = com.motu.motumap;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -2124,7 +2135,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = YNXPYRC5CR;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Frameworks",
@@ -2134,7 +2145,7 @@
 				INFOPLIST_FILE = MAMapKit_2D_Demo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.motu.map;
+				PRODUCT_BUNDLE_IDENTIFIER = com.motu.motumap;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

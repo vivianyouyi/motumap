@@ -35,9 +35,9 @@
     // Override point for customization after application launch.
     
     [self configureAPIKey];
-    WelcomeVC *VC = [[WelcomeVC alloc]init];
-    VC.hidesBottomBarWhenPushed = YES;
-    self.window.rootViewController = VC;
+    //WelcomeVC *VC = [[WelcomeVC alloc]init];
+    //VC.hidesBottomBarWhenPushed = YES;
+    //self.window.rootViewController = VC;
     return YES;
 }
 

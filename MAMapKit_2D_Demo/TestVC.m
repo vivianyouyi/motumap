@@ -26,25 +26,19 @@
     [super viewDidLoad];
     
     self.title = MainViewControllerTitle;
+ 
+    [self initTitles];
+    [self initDetalTitles];
+    [self initClassName];
     
-    UIImage *image = [UIImage imageNamed:[NSString stringWithFormat:@"aio_1.png"]];
-    UIImageView *imageView= [[UIImageView alloc]initWithFrame:CGRectMake(0,0,kScreenWidth,kScreenWidth/0.868)];
-    imageView.image = image;
-    imageView.contentMode = UIViewContentModeScaleAspectFit;
-    [self.view addSubview:imageView];
-//
-//    [self initTitles];
-//    [self initDetalTitles];
-//    [self initClassName];
-//    
-//    _mainTableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStyleGrouped];
-//    _mainTableView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
-//    _mainTableView.sectionHeaderHeight = 10;
-//    _mainTableView.sectionFooterHeight = 0;
-//    _mainTableView.delegate = self;
-//    _mainTableView.dataSource = self;
-//    
-//    [self.view addSubview:_mainTableView];
+    _mainTableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStyleGrouped];
+    _mainTableView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+    _mainTableView.sectionHeaderHeight = 10;
+    _mainTableView.sectionFooterHeight = 0;
+    _mainTableView.delegate = self;
+    _mainTableView.dataSource = self;
+    
+    [self.view addSubview:_mainTableView];
     
     // Do any additional setup after loading the view, typically from a nib.
 }
