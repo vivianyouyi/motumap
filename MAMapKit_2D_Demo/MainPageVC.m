@@ -23,6 +23,7 @@
 {
     [super viewDidLoad];
     
+    self.navigationController.navigationBar.hidden = YES;
     [self.view setBackgroundColor:[UIColor whiteColor]];
     
    // [self initToolBar];

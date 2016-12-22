@@ -299,6 +299,7 @@
 		C93634D51E03D5F4006F330F /* WelcomeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C93634D41E03D5F4006F330F /* WelcomeVC.m */; };
 		C93634E11E041579006F330F /* TestVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C93634E01E041579006F330F /* TestVC.m */; };
 		C93634E51E041592006F330F /* UIViewExt.m in Sources */ = {isa = PBXBuildFile; fileRef = C93634E41E041592006F330F /* UIViewExt.m */; };
+		C9901B751E08E22500091F40 /* MoNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9901B741E08E22500091F40 /* MoNavigationController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -685,6 +686,8 @@
 		C93634E01E041579006F330F /* TestVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestVC.m; sourceTree = "<group>"; };
 		C93634E31E041592006F330F /* UIViewExt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIViewExt.h; sourceTree = "<group>"; };
 		C93634E41E041592006F330F /* UIViewExt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIViewExt.m; sourceTree = "<group>"; };
+		C9901B731E08E22500091F40 /* MoNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoNavigationController.h; sourceTree = "<group>"; };
+		C9901B741E08E22500091F40 /* MoNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoNavigationController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -749,10 +752,8 @@
 		19D2EECC1D59C2920039B22A /* motu */ = {
 			isa = PBXGroup;
 			children = (
+				C9901B761E08E25900091F40 /* Modules */,
 				C93634E21E041584006F330F /* library */,
-				C93634DE1E04156B006F330F /* map */,
-				C93634D21E03D582006F330F /* Login */,
-				C93634D11E03D566006F330F /* Welcome */,
 				C93634B61E03D378006F330F /* Common */,
 				B6108E481D5C899200C359A7 /* Samples */,
 				B6108C8A1D5C831B00C359A7 /* Entries */,
@@ -1541,6 +1542,8 @@
 		C93634B71E03D391006F330F /* ViewCotroller */ = {
 			isa = PBXGroup;
 			children = (
+				C9901B731E08E22500091F40 /* MoNavigationController.h */,
+				C9901B741E08E22500091F40 /* MoNavigationController.m */,
 			);
 			name = ViewCotroller;
 			sourceTree = "<group>";
@@ -1576,7 +1579,7 @@
 			name = Login;
 			sourceTree = "<group>";
 		};
-		C93634DE1E04156B006F330F /* map */ = {
+		C93634DE1E04156B006F330F /* Map */ = {
 			isa = PBXGroup;
 			children = (
 				C93634DF1E041579006F330F /* TestVC.h */,
@@ -1584,7 +1587,7 @@
 				5EA9F6AD1E044CCA002983FE /* MainPageVC.h */,
 				5EA9F6AE1E044CCA002983FE /* MainPageVC.m */,
 			);
-			name = map;
+			name = Map;
 			sourceTree = "<group>";
 		};
 		C93634E21E041584006F330F /* library */ = {
@@ -1594,6 +1597,16 @@
 				C93634E41E041592006F330F /* UIViewExt.m */,
 			);
 			name = library;
+			sourceTree = "<group>";
+		};
+		C9901B761E08E25900091F40 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				C93634D11E03D566006F330F /* Welcome */,
+				C93634D21E03D582006F330F /* Login */,
+				C93634DE1E04156B006F330F /* Map */,
+			);
+			name = Modules;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1645,7 +1658,7 @@
 				TargetAttributes = {
 					19D2EEC91D59C2920039B22A = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = YNXPYRC5CR;
+						DevelopmentTeam = LZQU8K4TPD;
 						ProvisioningStyle = Automatic;
 					};
 					8156CD4D1D94DD8F0022C0FC = {
@@ -1816,6 +1829,7 @@
 				B6108F671D5D78E800C359A7 /* CustomUserLoactionViewController2.m in Sources */,
 				B6108FC61D62ED8000C359A7 /* AddControlsViewController.m in Sources */,
 				B6108EFC1D5C899200C359A7 /* CustomOverlayRenderer.m in Sources */,
+				C9901B751E08E22500091F40 /* MoNavigationController.m in Sources */,
 				B6108EE71D5C899200C359A7 /* RouteDetailViewController.m in Sources */,
 				B6108ED91D5C899200C359A7 /* TrafficViewController.m in Sources */,
 				B6108F901D5DB51900C359A7 /* NaviShareViewController.m in Sources */,
@@ -2113,7 +2127,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = YNXPYRC5CR;
+				DEVELOPMENT_TEAM = LZQU8K4TPD;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Frameworks",
@@ -2123,7 +2137,7 @@
 				INFOPLIST_FILE = MAMapKit_2D_Demo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.motu.motumap;
+				PRODUCT_BUNDLE_IDENTIFIER = com.deepoon.dpnassistant;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -2135,7 +2149,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = YNXPYRC5CR;
+				DEVELOPMENT_TEAM = LZQU8K4TPD;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Frameworks",
@@ -2145,7 +2159,7 @@
 				INFOPLIST_FILE = MAMapKit_2D_Demo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.motu.motumap;
+				PRODUCT_BUNDLE_IDENTIFIER = com.deepoon.dpnassistant;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

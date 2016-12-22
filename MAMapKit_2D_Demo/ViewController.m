@@ -19,6 +19,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = BgColor;
+    self.navigationController.navigationBar.hidden = YES;
+    //self.extendedLayoutIncludesOpaqueBars = YES;
     //[self createUI];
     [self showScrollView];
 }

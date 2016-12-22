@@ -25,7 +25,7 @@
 -(void) showScrollView{
     
     UIScrollView *_scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0,0,kScreenWidth,kScreenHeight)];
-    _scrollView.contentSize = CGSizeMake(kScreenWidth* 6, kScreenHeight);
+    _scrollView.contentSize = CGSizeMake(kScreenWidth* 3, kScreenHeight);
     //设置翻页效果，不允许反弹，不显示水平滑动条，设置代理为自己
     _scrollView.pagingEnabled = YES;
     _scrollView.bounces = NO;

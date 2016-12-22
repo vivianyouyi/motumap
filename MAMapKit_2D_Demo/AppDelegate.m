@@ -8,7 +8,7 @@
 
 #import "AppDelegate.h"
 #import "WelcomeVC.h"
-
+#import "MoNavigationController.h"
 
 @interface AppDelegate ()
 
@@ -35,9 +35,10 @@
     // Override point for customization after application launch.
     
     [self configureAPIKey];
-    //WelcomeVC *VC = [[WelcomeVC alloc]init];
-    //VC.hidesBottomBarWhenPushed = YES;
-    //self.window.rootViewController = VC;
+    
+    WelcomeVC *VC = [[WelcomeVC alloc]init];
+    MoNavigationController *nav = [[MoNavigationController alloc]initWithRootViewController:VC];
+    self.window.rootViewController = nav;
     return YES;
 }
 
