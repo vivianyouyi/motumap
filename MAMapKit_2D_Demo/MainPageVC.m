@@ -1,171 +1,131 @@
 //
-//  BackgroundLocationViewController.m
-//  AMapLocationKit
+//  AddControlsViewController.m
+//  MAMapKit_2D_Demo
 //
-//  Created by liubo on 8/4/16.
-//  Copyright © 2016 AutoNavi. All rights reserved.
+//  Created by shaobin on 16/8/16.
+//  Copyright © 2016年 Autonavi. All rights reserved.
 //
 
 #import "MainPageVC.h"
 
-@interface MainPageVC ()<MAMapViewDelegate, AMapLocationManagerDelegate>
+@interface MainPageVC ()<MAMapViewDelegate>
 
-@property (nonatomic, strong) UISegmentedControl *showSegment;
-@property (nonatomic, strong) UISegmentedControl *backgroundSegment;
-@property (nonatomic, strong) MAPointAnnotation *pointAnnotaiton;
+@property (nonatomic, strong) MAMapView *mapView;
+
+@property (nonatomic, strong) UIView *searchBgView;
+@property(nonatomic,strong)UIImageView *iconImageView;
+@property (nonatomic, strong) UITextField *searchField;
+@property(nonatomic,strong)UIImageView *voiceImageView;
+
+@property (nonatomic, strong) UIButton *gpsButton;
 
 @end
 
 @implementation MainPageVC
 #pragma mark - Life Cycle
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
-    self.navigationController.navigationBar.hidden = YES;
-    [self.view setBackgroundColor:[UIColor whiteColor]];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Back"
+                                                                             style:UIBarButtonItemStylePlain
+                                                                            target:self
+                                                                            action:@selector(returnAction)];
+    [self createSearchView];
+    self.mapView = [[MAMapView alloc] initWithFrame:self.view.bounds];
+    self.mapView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    self.mapView.delegate = self;
+    self.mapView.centerCoordinate = CLLocationCoordinate2DMake(39.907728, 116.397968);
+    self.mapView.showsUserLocation = YES;
+    [self.view addSubview:self.mapView];
     
-   // [self initToolBar];
+    UIView *zoomPannelView = [self makeZoomPannelView];
+    zoomPannelView.center = CGPointMake(self.view.bounds.size.width -  CGRectGetMidX(zoomPannelView.bounds) - 10,
+                                        self.view.bounds.size.height -  CGRectGetMidY(zoomPannelView.bounds) - 10);
     
-    [self initMapView];
+    zoomPannelView.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleLeftMargin;
+    [self.view addSubview:zoomPannelView];
     
-    [self configLocationManager];
-}
-#pragma mark - Action Handle
-
-- (void)configLocationManager
-{
-    self.locationManager = [[AMapLocationManager alloc] init];
-    
-    [self.locationManager setDelegate:self];
-    
-    //设置不允许系统暂停定位
-    [self.locationManager setPausesLocationUpdatesAutomatically:NO];
-    
-    //设置允许在后台定位
-    [self.locationManager setAllowsBackgroundLocationUpdates:YES];
-}
-
-- (void)showsSegmentAction:(UISegmentedControl *)sender
-{
-    if (sender.selectedSegmentIndex == 1)
-    {
-        //停止定位
-        [self.locationManager stopUpdatingLocation];
-        
-        //移除地图上的annotation
-        [self.mapView removeAnnotations:self.mapView.annotations];
-        self.pointAnnotaiton = nil;
-    }
-    else
-    {
-        //开始进行连续定位
-        [self.locationManager startUpdatingLocation];
-    }
+    self.gpsButton = [self makeGPSButtonView];
+    self.gpsButton.center = CGPointMake(CGRectGetMidX(self.gpsButton.bounds) + 10,
+                                        self.view.bounds.size.height -  CGRectGetMidY(self.gpsButton.bounds) - 20);
+    [self.view addSubview:self.gpsButton];
+    self.gpsButton.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleRightMargin;
 }
 
-- (void)backgroundSegmentAction:(UISegmentedControl *)sender
-{
-    [self.locationManager stopUpdatingLocation];
-    [self.mapView removeAnnotations:self.mapView.annotations];
-    _showSegment.selectedSegmentIndex = 1;
+-(void) createSearchView{
+    self.searchBgView = [[UIView alloc]initWithFrame:CGRectMake(20,40, kScreenWidth-40,DYNAMICFITCOUNT(300))];
+    self.searchBgView.backgroundColor = Cor1;
+    [self.view addSubview:self.searchBgView];
+
+    _iconImageView = [[UIImageView alloc]initWithFrame:CGRectMake(14,(DYNAMICFITCOUNT(108) - 20)/2,20, 20)];
+    _iconImageView.image = [UIImage imageNamed:@"icon_account"];
+    [self.searchBgView addSubview:_iconImageView];
     
-    if (sender.selectedSegmentIndex == 1)
-    {
-        //设置允许系统暂停定位
-        [self.locationManager setPausesLocationUpdatesAutomatically:YES];
-        
-        //设置禁止在后台定位
-        [self.locationManager setAllowsBackgroundLocationUpdates:NO];
-    }
-    else
-    {
-        //为了方便演示后台定位功能，这里设置不允许系统暂停定位
-        [self.locationManager setPausesLocationUpdatesAutomatically:NO];
-        
-        //设置允许在后台定位
-        [self.locationManager setAllowsBackgroundLocationUpdates:YES];
-    }
-}
-
-#pragma mark - AMapLocationManager Delegate
-
-- (void)amapLocationManager:(AMapLocationManager *)manager didFailWithError:(NSError *)error
-{
-    NSLog(@"%s, amapLocationManager = %@, error = %@", __func__, [manager class], error);
-}
-
-- (void)amapLocationManager:(AMapLocationManager *)manager didUpdateLocation:(CLLocation *)location
-{
-    NSLog(@"location:{lat:%f; lon:%f; accuracy:%f}", location.coordinate.latitude, location.coordinate.longitude, location.horizontalAccuracy);
+    _voiceImageView = [[UIImageView alloc]initWithFrame:CGRectMake(kScreenWidth-40,40,20, 20)];
+    _voiceImageView.image = [UIImage imageNamed:@"icon_account"];
+    [self.searchBgView addSubview:_voiceImageView];
     
-    //获取到定位信息，更新annotation
-    if (self.pointAnnotaiton == nil)
-    {
-        self.pointAnnotaiton = [[MAPointAnnotation alloc] init];
-        [self.pointAnnotaiton setCoordinate:location.coordinate];
-        
-        [self.mapView addAnnotation:self.pointAnnotaiton];
-    }
-    
-    [self.pointAnnotaiton setCoordinate:location.coordinate];
-    
-    [self.mapView setCenterCoordinate:location.coordinate];
-    [self.mapView setZoomLevel:15.1 animated:NO];
 }
-
-#pragma mark - Initialization
-
-- (void)initMapView
-{
-    if (self.mapView == nil)
-    {
-        self.mapView = [[MAMapView alloc] initWithFrame:self.view.bounds];
-        [self.mapView setDelegate:self];
-        
-        [self.view addSubview:self.mapView];
-    }
-}
-
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    
-    self.navigationController.toolbar.translucent   = YES;
-    self.navigationController.toolbarHidden         = NO;
-}
-
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    
-    [self.locationManager startUpdatingLocation];
 }
 
-#pragma mark - MAMapView Delegate
+- (UIButton *)makeGPSButtonView {
+    UIButton *ret = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 40, 40)];
+    ret.backgroundColor = [UIColor whiteColor];
+    ret.layer.cornerRadius = 4;
+    
+    [ret setImage:[UIImage imageNamed:@"gpsStat1"] forState:UIControlStateNormal];
+    [ret addTarget:self action:@selector(gpsAction) forControlEvents:UIControlEventTouchUpInside];
+    
+    return ret;
+}
 
-- (MAAnnotationView *)mapView:(MAMapView *)mapView viewForAnnotation:(id<MAAnnotation>)annotation
+- (UIView *)makeZoomPannelView
 {
-    if ([annotation isKindOfClass:[MAPointAnnotation class]])
-    {
-        static NSString *pointReuseIndetifier = @"pointReuseIndetifier";
-        
-        MAPinAnnotationView *annotationView = (MAPinAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:pointReuseIndetifier];
-        if (annotationView == nil)
-        {
-            annotationView = [[MAPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:pointReuseIndetifier];
-        }
-        
-        annotationView.canShowCallout   = NO;
-        annotationView.animatesDrop     = NO;
-        annotationView.draggable        = NO;
-        annotationView.image            = [UIImage imageNamed:@"icon_location.png"];
-        
-        return annotationView;
-    }
+    UIView *ret = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 53, 98)];
     
-    return nil;
+    UIButton *incBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 53, 49)];
+    [incBtn setImage:[UIImage imageNamed:@"increase"] forState:UIControlStateNormal];
+    [incBtn sizeToFit];
+    [incBtn addTarget:self action:@selector(zoomPlusAction) forControlEvents:UIControlEventTouchUpInside];
+    
+    UIButton *decBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 49, 53, 49)];
+    [decBtn setImage:[UIImage imageNamed:@"decrease"] forState:UIControlStateNormal];
+    [decBtn sizeToFit];
+    [decBtn addTarget:self action:@selector(zoomMinusAction) forControlEvents:UIControlEventTouchUpInside];
+    
+    
+    [ret addSubview:incBtn];
+    [ret addSubview:decBtn];
+    
+    return ret;
 }
 
+#pragma mark - Action Handlers
+- (void)returnAction
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)zoomPlusAction
+{
+    CGFloat oldZoom = self.mapView.zoomLevel;
+    [self.mapView setZoomLevel:(oldZoom + 1) animated:YES];
+}
+
+- (void)zoomMinusAction
+{
+    CGFloat oldZoom = self.mapView.zoomLevel;
+    [self.mapView setZoomLevel:(oldZoom - 1) animated:YES];
+}
+
+- (void)gpsAction {
+    if(self.mapView.userLocation.updating && self.mapView.userLocation.location) {
+        [self.mapView setCenterCoordinate:self.mapView.userLocation.location.coordinate animated:YES];
+        [self.gpsButton setSelected:YES];
+    }
+}
 @end

@@ -1658,7 +1658,7 @@
 				TargetAttributes = {
 					19D2EEC91D59C2920039B22A = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = LZQU8K4TPD;
+						DevelopmentTeam = YNXPYRC5CR;
 						ProvisioningStyle = Automatic;
 					};
 					8156CD4D1D94DD8F0022C0FC = {
@@ -2127,7 +2127,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = LZQU8K4TPD;
+				DEVELOPMENT_TEAM = YNXPYRC5CR;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Frameworks",
@@ -2137,7 +2137,7 @@
 				INFOPLIST_FILE = MAMapKit_2D_Demo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.deepoon.dpnassistant;
+				PRODUCT_BUNDLE_IDENTIFIER = com.motu.motumap;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -2149,7 +2149,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = LZQU8K4TPD;
+				DEVELOPMENT_TEAM = YNXPYRC5CR;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Frameworks",
@@ -2159,7 +2159,7 @@
 				INFOPLIST_FILE = MAMapKit_2D_Demo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.deepoon.dpnassistant;
+				PRODUCT_BUNDLE_IDENTIFIER = com.motu.motumap;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

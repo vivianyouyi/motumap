@@ -8,6 +8,7 @@
 
 #import "WelcomeVC.h"
 #import "TestVC.h"
+#import "MainPageVC.h"
 
 @interface WelcomeVC ()<UIScrollViewDelegate>
 @property(nonatomic,strong)UIButton *aioButton;
@@ -93,7 +94,8 @@
 -(void)startClick:(UIButton*)button{
     NSLog(@"点击start");
     
-    TestVC *subViewController = [[TestVC alloc] init];
+    //TestVC *subViewController = [[TestVC alloc] init];
+    MainPageVC *subViewController = [[MainPageVC alloc] init];
     subViewController.title = @"test";
     [self.navigationController pushViewController:subViewController animated:YES];
     
