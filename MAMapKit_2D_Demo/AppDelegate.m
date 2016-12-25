@@ -9,7 +9,7 @@
 #import "AppDelegate.h"
 #import "WelcomeVC.h"
 #import "MoNavigationController.h"
-
+#import "MainPageVC.h"
 @interface AppDelegate ()
 
 @end
@@ -36,7 +36,7 @@
     
     [self configureAPIKey];
     
-    WelcomeVC *VC = [[WelcomeVC alloc]init];
+    MainPageVC *VC = [[MainPageVC alloc]init];
     MoNavigationController *nav = [[MoNavigationController alloc]initWithRootViewController:VC];
     self.window.rootViewController = nav;
     return YES;

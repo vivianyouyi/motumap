@@ -1,12 +1,13 @@
 //
-//  TestVC.h
+//  SearchVC.h
 //  MotuMap
 //
-//  Created by 王亚辉 on 2016/12/16.
+//  Created by 李维维 on 2016/12/24.
 //  Copyright © 2016年 Autonavi. All rights reserved.
 //
+
 #import <UIKit/UIKit.h>
 
-@interface TestVC : UIViewController
+@interface SearchVC : UIViewController
 
 @end

@@ -123,6 +123,11 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+- (void)startVoiceSearch
+{
+    
+}
+
 /* 切到上一个方案路线. */
 - (void)previousCourseAction
 {

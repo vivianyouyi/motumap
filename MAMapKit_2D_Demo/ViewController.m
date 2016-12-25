@@ -7,7 +7,6 @@
 //
 
 #import "ViewController.h"
-#import "TestVC.h"
 #import "MainPageVC.h"
 
 @interface ViewController ()<UIScrollViewDelegate>

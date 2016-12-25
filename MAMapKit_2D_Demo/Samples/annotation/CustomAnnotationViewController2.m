@@ -47,6 +47,8 @@
 #pragma mark - action handling
 - (void)returnAction
 {
+    
+    self.navigationController.navigationBar.hidden =YES;
     [self.navigationController popViewControllerAnimated:YES];
 }
 

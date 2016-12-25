@@ -7,14 +7,20 @@
 //
 
 #import "MainPageVC.h"
+#import "SearchVC.h"
+#import "DistrictViewController.h"
 
 @interface MainPageVC ()<MAMapViewDelegate>
 
 @property (nonatomic, strong) MAMapView *mapView;
 
 @property (nonatomic, strong) UIView *searchBgView;
-@property(nonatomic,strong)UIImageView *iconImageView;
-@property (nonatomic, strong) UITextField *searchField;
+@property(nonatomic,strong)UIImageView *avatarImageView;
+
+@property(nonatomic,strong)UIImageView *lineLeft;
+@property(nonatomic,strong)UIImageView *searchIcon;
+@property(nonatomic,strong)UILabel *searchLabel;
+@property(nonatomic,strong)UIImageView *lineRight;
 @property(nonatomic,strong)UIImageView *voiceImageView;
 
 @property (nonatomic, strong) UIButton *gpsButton;
@@ -31,7 +37,9 @@
                                                                              style:UIBarButtonItemStylePlain
                                                                             target:self
                                                                             action:@selector(returnAction)];
-    [self createSearchView];
+    
+    self.navigationController.navigationBar.hidden = YES;
+   
     self.mapView = [[MAMapView alloc] initWithFrame:self.view.bounds];
     self.mapView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     self.mapView.delegate = self;
@@ -51,20 +59,46 @@
                                         self.view.bounds.size.height -  CGRectGetMidY(self.gpsButton.bounds) - 20);
     [self.view addSubview:self.gpsButton];
     self.gpsButton.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleRightMargin;
+    
+     [self createSearchView];
 }
 
 -(void) createSearchView{
-    self.searchBgView = [[UIView alloc]initWithFrame:CGRectMake(20,40, kScreenWidth-40,DYNAMICFITCOUNT(300))];
+    self.searchBgView = [[UIView alloc]initWithFrame:CGRectMake(14,30, kScreenWidth-28,60)];
     self.searchBgView.backgroundColor = Cor1;
     [self.view addSubview:self.searchBgView];
 
-    _iconImageView = [[UIImageView alloc]initWithFrame:CGRectMake(14,(DYNAMICFITCOUNT(108) - 20)/2,20, 20)];
-    _iconImageView.image = [UIImage imageNamed:@"icon_account"];
-    [self.searchBgView addSubview:_iconImageView];
+    _avatarImageView = [[UIImageView alloc]initWithFrame:CGRectMake(12, 10,40, 40)];
+    _avatarImageView.image = [UIImage imageNamed:@"avatar"];
+    [self.searchBgView addSubview:_avatarImageView];
     
-    _voiceImageView = [[UIImageView alloc]initWithFrame:CGRectMake(kScreenWidth-40,40,20, 20)];
-    _voiceImageView.image = [UIImage imageNamed:@"icon_account"];
+    _searchLabel = [UILabel labelWithFrame:CGRectMake(_avatarImageView.right + 10,23,DYNAMICFITCOUNT(380),Size3+DYNAMICFITCOUNT(4)) font:Size3 backgroundColor:[UIColor clearColor] textColor:Cor4];
+    _searchLabel.text = @"查找地点，避开限行区域";
+    UITapGestureRecognizer *labelTapGestureRecognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(startToSearch:)];
+    [_searchLabel addGestureRecognizer:labelTapGestureRecognizer];
+    _searchLabel.userInteractionEnabled=YES;
+    
+    [self.searchBgView addSubview:_searchLabel];
+ 
+    
+    _voiceImageView = [[UIImageView alloc]initWithFrame:CGRectMake(_searchBgView.right-60, 10,40, 40)];
+    _voiceImageView.image = [UIImage imageNamed:@"avatar"];
     [self.searchBgView addSubview:_voiceImageView];
+    
+}
+
+-(void) startToSearch:(UITapGestureRecognizer *)recognizer{
+    
+    UILabel *label=(UILabel*)recognizer.view;
+    
+    NSLog(@"%@被点击了",label.text);
+    
+    //DistrictViewController *subViewController = [[DistrictViewController alloc] init];
+    
+    SearchVC *subViewController = [[SearchVC alloc] init];
+    subViewController.title = @"test";
+    [self.navigationController pushViewController:subViewController animated:YES];
+    
     
 }
 - (void)viewDidAppear:(BOOL)animated

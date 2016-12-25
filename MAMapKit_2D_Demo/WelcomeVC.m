@@ -7,7 +7,6 @@
 //
 
 #import "WelcomeVC.h"
-#import "TestVC.h"
 #import "MainPageVC.h"
 
 @interface WelcomeVC ()<UIScrollViewDelegate>

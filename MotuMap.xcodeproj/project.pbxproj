@@ -13,6 +13,7 @@
 		19D2EED81D59C2920039B22A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 19D2EED61D59C2920039B22A /* Main.storyboard */; };
 		19D2EEDA1D59C2920039B22A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 19D2EED91D59C2920039B22A /* Assets.xcassets */; };
 		19D2EEDD1D59C2920039B22A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 19D2EEDB1D59C2920039B22A /* LaunchScreen.storyboard */; };
+		5E48F91E1E0E0EA8004B9B68 /* SearchVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E48F91D1E0E0EA8004B9B68 /* SearchVC.m */; };
 		5EA9F6AC1E044BB2002983FE /* AMapLocationKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5EA9F6AB1E044BB2002983FE /* AMapLocationKit.framework */; };
 		5EA9F6AF1E044CCA002983FE /* MainPageVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EA9F6AE1E044CCA002983FE /* MainPageVC.m */; };
 		6A1CEFB81DF5A87C00DB1447 /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A1CEFB71DF5A87C00DB1447 /* JavaScriptCore.framework */; };
@@ -297,7 +298,6 @@
 		C93634C41E03D3B6006F330F /* UIView+UIViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C93634C01E03D3B6006F330F /* UIView+UIViewController.m */; };
 		C93634CE1E03D452006F330F /* MoUserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C93634C61E03D452006F330F /* MoUserModel.m */; };
 		C93634D51E03D5F4006F330F /* WelcomeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C93634D41E03D5F4006F330F /* WelcomeVC.m */; };
-		C93634E11E041579006F330F /* TestVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C93634E01E041579006F330F /* TestVC.m */; };
 		C93634E51E041592006F330F /* UIViewExt.m in Sources */ = {isa = PBXBuildFile; fileRef = C93634E41E041592006F330F /* UIViewExt.m */; };
 		C9901B751E08E22500091F40 /* MoNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9901B741E08E22500091F40 /* MoNavigationController.m */; };
 /* End PBXBuildFile section */
@@ -313,6 +313,8 @@
 		19D2EED91D59C2920039B22A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		19D2EEDC1D59C2920039B22A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		19D2EEDE1D59C2920039B22A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5E48F91C1E0E0EA8004B9B68 /* SearchVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchVC.h; sourceTree = "<group>"; };
+		5E48F91D1E0E0EA8004B9B68 /* SearchVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchVC.m; sourceTree = "<group>"; };
 		5EA9F6AB1E044BB2002983FE /* AMapLocationKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AMapLocationKit.framework; path = Frameworks/AMapLocationKit.framework; sourceTree = "<group>"; };
 		5EA9F6AD1E044CCA002983FE /* MainPageVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainPageVC.h; sourceTree = "<group>"; };
 		5EA9F6AE1E044CCA002983FE /* MainPageVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainPageVC.m; sourceTree = "<group>"; };
@@ -682,8 +684,6 @@
 		C93634C91E03D452006F330F /* MoGlobalColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoGlobalColor.h; sourceTree = "<group>"; };
 		C93634D31E03D5F4006F330F /* WelcomeVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WelcomeVC.h; sourceTree = "<group>"; };
 		C93634D41E03D5F4006F330F /* WelcomeVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WelcomeVC.m; sourceTree = "<group>"; };
-		C93634DF1E041579006F330F /* TestVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestVC.h; sourceTree = "<group>"; };
-		C93634E01E041579006F330F /* TestVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestVC.m; sourceTree = "<group>"; };
 		C93634E31E041592006F330F /* UIViewExt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIViewExt.h; sourceTree = "<group>"; };
 		C93634E41E041592006F330F /* UIViewExt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIViewExt.m; sourceTree = "<group>"; };
 		C9901B731E08E22500091F40 /* MoNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoNavigationController.h; sourceTree = "<group>"; };
@@ -780,6 +780,15 @@
 				B61084A01D59D6E000C359A7 /* PrefixHeader.pch */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		5E48F91B1E0D7BB5004B9B68 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				5E48F91C1E0E0EA8004B9B68 /* SearchVC.h */,
+				5E48F91D1E0E0EA8004B9B68 /* SearchVC.m */,
+			);
+			name = Search;
 			sourceTree = "<group>";
 		};
 		8156CD4F1D94DD8F0022C0FC /* MAMapKit_2D_Swift */ = {
@@ -1582,8 +1591,6 @@
 		C93634DE1E04156B006F330F /* Map */ = {
 			isa = PBXGroup;
 			children = (
-				C93634DF1E041579006F330F /* TestVC.h */,
-				C93634E01E041579006F330F /* TestVC.m */,
 				5EA9F6AD1E044CCA002983FE /* MainPageVC.h */,
 				5EA9F6AE1E044CCA002983FE /* MainPageVC.m */,
 			);
@@ -1602,6 +1609,7 @@
 		C9901B761E08E25900091F40 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				5E48F91B1E0D7BB5004B9B68 /* Search */,
 				C93634D11E03D566006F330F /* Welcome */,
 				C93634D21E03D582006F330F /* Login */,
 				C93634DE1E04156B006F330F /* Map */,
@@ -1850,6 +1858,7 @@
 				B6108F5B1D5D71D200C359A7 /* AnimatedAnnotation.m in Sources */,
 				8156CD411D910BB70022C0FC /* RoutePlanRidingViewController.m in Sources */,
 				B6108EE91D5C899200C359A7 /* StepDetailViewController.m in Sources */,
+				5E48F91E1E0E0EA8004B9B68 /* SearchVC.m in Sources */,
 				B6108F071D5C899200C359A7 /* PoiSearchPerIdController.m in Sources */,
 				B6108ED31D5C899200C359A7 /* AnnotationViewController.m in Sources */,
 				B6108EF01D5C899200C359A7 /* WalkingDetailViewController.m in Sources */,
@@ -1894,7 +1903,6 @@
 				B6108C741D5C7D2100C359A7 /* ALView+PureLayout.m in Sources */,
 				B6108F731D5DA22600C359A7 /* RoutePlanWalkViewController.m in Sources */,
 				B6108F921D5DB51900C359A7 /* RouteShareViewController.m in Sources */,
-				C93634E11E041579006F330F /* TestVC.m in Sources */,
 				B6108F931D5DB51900C359A7 /* ShareSearchBaseViewController.m in Sources */,
 				B6108EEB1D5C899200C359A7 /* SubPoiDetailViewController.m in Sources */,
 				B675DEDE1D6EA3DC00362D62 /* WeatherViewController.m in Sources */,
