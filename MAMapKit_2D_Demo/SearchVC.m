@@ -27,26 +27,19 @@
 
 //@property (nonatomic, strong) MAMapView *mapView;
 @property (nonatomic, strong) AMapSearchAPI *search;
-
-
-
 @property (nonatomic, strong) UIView *searchBgView;
-
-
-/**左边按钮*/
 @property (nonatomic,retain)UIButton *leftBtn;
-/**右边按钮*/
-@property (nonatomic,retain)UIButton *rightBtn;
+@property (nonatomic,retain)UIButton *deleteBtn;
 @property(nonatomic,strong)UIButton *voiceBtn;
 
-@property (nonatomic, strong) NSMutableArray *tips;
 
-@property (nonatomic, strong) NSMutableArray *busLines;
+@property(nonatomic,strong)UITableView *hisTableView;
+@property(nonatomic,strong)UITableView *searchTableView;
+@property (nonatomic, strong) NSMutableArray *tips;
 
 @end
 
 @implementation SearchVC
-@synthesize tips = _tips;
 
 #pragma mark - Life Cycle
 
@@ -58,6 +51,14 @@
     }
     
     return self;
+}
+
+#pragma mark - 懒加载
+-(NSMutableArray*)tips{
+    if (!_tips) {
+        _tips = [NSMutableArray array];
+    }
+    return _tips;
 }
 
 - (void)viewDidLoad
@@ -117,6 +118,16 @@
     addImageView.image = addImage;
     [self.voiceBtn addSubview:addImageView];
     [self.voiceBtn addTarget:self action:@selector(startVoiceSearch) forControlEvents:UIControlEventTouchUpInside];
+    
+    self.searchTableView= [[UITableView alloc]initWithFrame:CGRectMake(0,self.searchBgView.height +20,kScreenWidth,self.view.height) style:UITableViewStyleGrouped];
+    self.searchTableView.delegate = self;
+    self.searchTableView.dataSource = self;
+    self.searchTableView.backgroundColor = BgColor;
+    self.searchTableView.showsVerticalScrollIndicator = NO;
+    self.searchTableView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0);
+    self.searchTableView.bounces = YES;
+    self.searchTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    [self.view addSubview:self.searchTableView];
   
 }
 
@@ -178,38 +189,6 @@
     [self.search AMapInputTipsSearch:tips];
 }
 
-- (void)gotoDetailForTip:(AMapTip *)tip
-{
-    if (tip != nil)
-    {
-        TipDetailViewController *tipDetailViewController = [[TipDetailViewController alloc] init];
-        tipDetailViewController.tip                      = tip;
-        
-        [self.navigationController pushViewController:tipDetailViewController animated:YES];
-    }
-}
-
-- (void)gotoDetailForBusStop:(AMapBusStop *)busStop
-{
-    if (busStop != nil)
-    {
-        BusStopDetailViewController *busStopDetailViewController = [[BusStopDetailViewController alloc] init];
-        busStopDetailViewController.busStop                      = busStop;
-        
-        [self.navigationController pushViewController:busStopDetailViewController animated:YES];
-    }
-}
-
-- (void)gotoDetailForPoi:(AMapPOI *)poi
-{
-    if (poi != nil)
-    {
-        PoiDetailViewController *detail = [[PoiDetailViewController alloc] init];
-        detail.poi                      = poi;
-        
-        [self.navigationController pushViewController:detail animated:YES];
-    }
-}
 
 #pragma mark - AMapSearchDelegate
 - (void)AMapSearchRequest:(id)request didFailWithError:(NSError *)error
@@ -222,6 +201,7 @@
 {
     [self.tips setArray:response.tips];
     
+    [self.searchTableView reloadData];
     NSLog(@"onInputTipsSearchDone: %lu", self.tips.count);
     
 }
@@ -285,6 +265,40 @@
     AMapTip *tip = self.tips[indexPath.row];
     
 }
+
+- (void)gotoDetailForTip:(AMapTip *)tip
+{
+    if (tip != nil)
+    {
+        TipDetailViewController *tipDetailViewController = [[TipDetailViewController alloc] init];
+        tipDetailViewController.tip                      = tip;
+        
+        [self.navigationController pushViewController:tipDetailViewController animated:YES];
+    }
+}
+
+- (void)gotoDetailForBusStop:(AMapBusStop *)busStop
+{
+    if (busStop != nil)
+    {
+        BusStopDetailViewController *busStopDetailViewController = [[BusStopDetailViewController alloc] init];
+        busStopDetailViewController.busStop                      = busStop;
+        
+        [self.navigationController pushViewController:busStopDetailViewController animated:YES];
+    }
+}
+
+- (void)gotoDetailForPoi:(AMapPOI *)poi
+{
+    if (poi != nil)
+    {
+        PoiDetailViewController *detail = [[PoiDetailViewController alloc] init];
+        detail.poi                      = poi;
+        
+        [self.navigationController pushViewController:detail animated:YES];
+    }
+}
+
 
 @end
 
