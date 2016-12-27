@@ -36,22 +36,11 @@
 @property(nonatomic,strong)UITableView *hisTableView;
 @property(nonatomic,strong)UITableView *searchTableView;
 @property (nonatomic, strong) NSMutableArray *tips;
+@property (nonatomic, strong) NSMutableArray *hislist;
 
 @end
 
 @implementation SearchVC
-
-#pragma mark - Life Cycle
-
-- (id)init
-{
-    if (self = [super init])
-    {
-        self.tips = [NSMutableArray array];
-    }
-    
-    return self;
-}
 
 #pragma mark - 懒加载
 -(NSMutableArray*)tips{
@@ -59,6 +48,13 @@
         _tips = [NSMutableArray array];
     }
     return _tips;
+}
+
+-(NSMutableArray*)hislist{
+    if (!_hislist) {
+        _hislist = [NSMutableArray array];
+    }
+    return _hislist;
 }
 
 - (void)viewDidLoad
@@ -71,6 +67,9 @@
     self.view.backgroundColor = Cor1;
     
     [self initSearchView];
+    
+    UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleReturn)];
+    [self.view addGestureRecognizer:tap];
 }
 
 #pragma mark - Initialization
@@ -84,7 +83,7 @@
     
     //左边按钮
     _leftBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [self.leftBtn setImage:[UIImage imageNamed:@"icon_back"] forState:UIControlStateNormal];
+    [self.leftBtn setImage:[UIImage imageNamed:@"back"] forState:UIControlStateNormal];
     _leftBtn.frame = CGRectMake(0, 0, 40, 50);
     [_leftBtn addTarget:self action:@selector(returnAction) forControlEvents:UIControlEventTouchUpInside];
     _leftBtn.contentMode = UIViewContentModeCenter;
@@ -120,13 +119,14 @@
     [self.voiceBtn addTarget:self action:@selector(startVoiceSearch) forControlEvents:UIControlEventTouchUpInside];
     
     self.searchTableView= [[UITableView alloc]initWithFrame:CGRectMake(0,self.searchBgView.height +20,kScreenWidth,self.view.height) style:UITableViewStyleGrouped];
+    
+    self.searchTableView.tag = 1;
     self.searchTableView.delegate = self;
     self.searchTableView.dataSource = self;
     self.searchTableView.backgroundColor = BgColor;
     self.searchTableView.showsVerticalScrollIndicator = NO;
-    self.searchTableView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0);
-    self.searchTableView.bounces = YES;
     self.searchTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    self.searchTableView.hidden = YES;
     [self.view addSubview:self.searchTableView];
   
 }
@@ -146,8 +146,12 @@
     if(ideaField.text.length > 0&&![ideaField.text isEqualToString:@"搜索"])
     {
         [self searchTipsWithKey:ideaField.text];
-        return;
+    }else if(ideaField.text == NULL || [ideaField.text isEqualToString:@""])
+    {
+        [ideaField resignFirstResponder];
+        self.searchTableView.hidden = YES;
     }
+    
 }
 
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
@@ -202,6 +206,7 @@
     [self.tips setArray:response.tips];
     
     [self.searchTableView reloadData];
+    self.searchTableView.hidden = NO;
     NSLog(@"onInputTipsSearchDone: %lu", self.tips.count);
     
 }
@@ -229,7 +234,24 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.tips.count;
+    NSUInteger count = self.tips.count;
+    if(tableView.tag == 1){
+     count = self.tips.count;
+    }else if(tableView.tag == 0){
+        //return self.tips.count;
+    }
+    return count;
+}
+
+#pragma mark - UITableViewDelegate
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    AMapTip *tip = self.tips[indexPath.row];
+    
+}
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    [ideaField resignFirstResponder];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -257,14 +279,13 @@
     
     return cell;
 }
-
-#pragma mark - UITableViewDelegate
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+//键盘响应
+- (void)handleReturn
 {
-    AMapTip *tip = self.tips[indexPath.row];
-    
+    [ideaField resignFirstResponder];
 }
+
+
 
 - (void)gotoDetailForTip:(AMapTip *)tip
 {

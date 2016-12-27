@@ -33,11 +33,6 @@
 {
     [super viewDidLoad];
     
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Back"
-                                                                             style:UIBarButtonItemStylePlain
-                                                                            target:self
-                                                                            action:@selector(returnAction)];
-    
     self.navigationController.navigationBar.hidden = YES;
    
     self.mapView = [[MAMapView alloc] initWithFrame:self.view.bounds];
@@ -45,6 +40,8 @@
     self.mapView.delegate = self;
     self.mapView.centerCoordinate = CLLocationCoordinate2DMake(39.907728, 116.397968);
     self.mapView.showsUserLocation = YES;
+    self.mapView.showsScale = NO;
+    self.mapView.showsCompass = NO;
     [self.view addSubview:self.mapView];
     
     UIView *zoomPannelView = [self makeZoomPannelView];
