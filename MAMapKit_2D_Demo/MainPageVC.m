@@ -8,9 +8,9 @@
 
 #import "MainPageVC.h"
 #import "SearchVC.h"
-#import "DistrictViewController.h"
+#import <AMapLocationKit/AMapLocationKit.h>
 
-@interface MainPageVC ()<MAMapViewDelegate>
+@interface MainPageVC ()<MAMapViewDelegate,AMapLocationManagerDelegate>
 
 @property (nonatomic, strong) MAMapView *mapView;
 
@@ -25,6 +25,9 @@
 
 @property (nonatomic, strong) UIButton *gpsButton;
 
+@property (nonatomic, strong) NSString *city;
+@property (nonatomic, strong) AMapLocationManager *locationManager;
+@property (nonatomic, strong) MAPointAnnotation *pointAnnotaiton;
 @end
 
 @implementation MainPageVC
@@ -34,7 +37,76 @@
     [super viewDidLoad];
     
     self.navigationController.navigationBar.hidden = YES;
-   
+    
+    [self initMapView];
+    [self createSearchView];
+    [self configLocationManager];
+}
+#pragma mark - Action Handle
+
+- (void)configLocationManager
+{
+    self.locationManager = [[AMapLocationManager alloc] init];
+    
+    [self.locationManager setDelegate:self];
+    
+    //设置不允许系统暂停定位
+    [self.locationManager setPausesLocationUpdatesAutomatically:NO];
+    
+    //设置允许在后台定位
+    [self.locationManager setAllowsBackgroundLocationUpdates:YES];
+    //设置允许在后台定位
+    [self.locationManager setAllowsBackgroundLocationUpdates:YES];
+    //   定位超时时间，最低2s，此处设置为2s
+    self.locationManager.locationTimeout =2;
+    //   逆地理请求超时时间，最低2s，此处设置为2s
+    self.locationManager.reGeocodeTimeout = 2;
+    //进行单次带逆地理定位请求
+    [self.locationManager requestLocationWithReGeocode:YES completionBlock:^(CLLocation *location, AMapLocationReGeocode *regeocode, NSError *error) {
+        
+        if (error)
+        {
+            NSLog(@"locError:{%ld - %@};", (long)error.code, error.localizedDescription);
+            
+            if (error.code == AMapLocationErrorLocateFailed)
+            {
+                return;
+            }
+        }
+        
+        NSLog(@"location:%@", location);
+        NSLog(@"location.coordinate.latitude:%f", location.coordinate.latitude);
+        NSLog(@"location.coordinate.longitude:%f", location.coordinate.longitude);
+    
+        self.city = regeocode.city;
+        NSLog(@"self.city :%@", self.city );
+        //获取到定位信息，更新annotation
+        MAPointAnnotation *annotation = [[MAPointAnnotation alloc] init];
+        [annotation setCoordinate:location.coordinate];
+        
+        [self addAnnotationToMapView:annotation];
+    }];
+}
+
+- (void)addAnnotationToMapView:(id<MAAnnotation>)annotation
+{
+    [self.mapView addAnnotation:annotation];
+    
+    NSLog(@"addAnnotationToMapView:");
+    [self.mapView selectAnnotation:annotation animated:YES];
+    [self.mapView setZoomLevel:15.1 animated:NO];
+    [self.mapView setCenterCoordinate:annotation.coordinate animated:YES];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+}
+
+- (void)initMapView
+{
+    
     self.mapView = [[MAMapView alloc] initWithFrame:self.view.bounds];
     self.mapView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     self.mapView.delegate = self;
@@ -57,9 +129,7 @@
     [self.view addSubview:self.gpsButton];
     self.gpsButton.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleRightMargin;
     
-     [self createSearchView];
 }
-
 -(void) createSearchView{
     self.searchBgView = [[UIView alloc]initWithFrame:CGRectMake(14,30, kScreenWidth-28,60)];
     self.searchBgView.backgroundColor = Cor1;
@@ -93,14 +163,11 @@
     //DistrictViewController *subViewController = [[DistrictViewController alloc] init];
     
     SearchVC *subViewController = [[SearchVC alloc] init];
+    subViewController.city = self.city;
     subViewController.title = @"test";
     [self.navigationController pushViewController:subViewController animated:YES];
     
     
-}
-- (void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
 }
 
 - (UIButton *)makeGPSButtonView {

@@ -95,7 +95,7 @@
 -(void)startClick:(UIButton*)button{
     NSLog(@"点击start");
     
-    //TestVC *subViewController = [[TestVC alloc] init];
+    //TestViewController *subViewController = [[TestViewController alloc] init];
     MainPageVC *subViewController = [[MainPageVC alloc] init];
     subViewController.title = @"test";
     [self.navigationController pushViewController:subViewController animated:YES];

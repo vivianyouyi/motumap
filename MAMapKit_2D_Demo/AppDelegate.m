@@ -10,6 +10,7 @@
 #import "WelcomeVC.h"
 #import "MoNavigationController.h"
 #import "MainPageVC.h"
+#import "TestViewController.h"
 @interface AppDelegate ()
 
 @end
@@ -36,7 +37,8 @@
     
     [self configureAPIKey];
     
-    MainPageVC *VC = [[MainPageVC alloc]init];
+    //MainPageVC *VC = [[MainPageVC alloc]init];
+    TestViewController *VC = [[TestViewController alloc]init];
     MoNavigationController *nav = [[MoNavigationController alloc]initWithRootViewController:VC];
     self.window.rootViewController = nav;
     return YES;

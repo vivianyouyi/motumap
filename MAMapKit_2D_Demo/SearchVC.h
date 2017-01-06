@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface SearchVC : UIViewController
-
+@property (retain,nonatomic) NSString *city;
 @end

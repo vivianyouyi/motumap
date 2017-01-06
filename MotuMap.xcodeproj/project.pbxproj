@@ -300,6 +300,8 @@
 		C93634D51E03D5F4006F330F /* WelcomeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C93634D41E03D5F4006F330F /* WelcomeVC.m */; };
 		C93634E51E041592006F330F /* UIViewExt.m in Sources */ = {isa = PBXBuildFile; fileRef = C93634E41E041592006F330F /* UIViewExt.m */; };
 		C9901B751E08E22500091F40 /* MoNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9901B741E08E22500091F40 /* MoNavigationController.m */; };
+		C996A2391E1F38B400481DC7 /* TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C996A2381E1F38B400481DC7 /* TestViewController.m */; };
+		C996A23C1E1F3B6000481DC7 /* RoutePlanVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C996A23B1E1F3B6000481DC7 /* RoutePlanVC.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -688,6 +690,10 @@
 		C93634E41E041592006F330F /* UIViewExt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIViewExt.m; sourceTree = "<group>"; };
 		C9901B731E08E22500091F40 /* MoNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoNavigationController.h; sourceTree = "<group>"; };
 		C9901B741E08E22500091F40 /* MoNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoNavigationController.m; sourceTree = "<group>"; };
+		C996A2371E1F38B400481DC7 /* TestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestViewController.h; sourceTree = "<group>"; };
+		C996A2381E1F38B400481DC7 /* TestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestViewController.m; sourceTree = "<group>"; };
+		C996A23A1E1F3B6000481DC7 /* RoutePlanVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoutePlanVC.h; sourceTree = "<group>"; };
+		C996A23B1E1F3B6000481DC7 /* RoutePlanVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoutePlanVC.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -761,6 +767,8 @@
 				B61084A81D59D86500C359A7 /* Configuration */,
 				19D2EED01D59C2920039B22A /* AppDelegate.h */,
 				19D2EED11D59C2920039B22A /* AppDelegate.m */,
+				C996A2371E1F38B400481DC7 /* TestViewController.h */,
+				C996A2381E1F38B400481DC7 /* TestViewController.m */,
 				19D2EED31D59C2920039B22A /* ViewController.h */,
 				19D2EED41D59C2920039B22A /* ViewController.m */,
 				19D2EED61D59C2920039B22A /* Main.storyboard */,
@@ -1613,6 +1621,8 @@
 				C93634D11E03D566006F330F /* Welcome */,
 				C93634D21E03D582006F330F /* Login */,
 				C93634DE1E04156B006F330F /* Map */,
+				C996A23A1E1F3B6000481DC7 /* RoutePlanVC.h */,
+				C996A23B1E1F3B6000481DC7 /* RoutePlanVC.m */,
 			);
 			name = Modules;
 			sourceTree = "<group>";
@@ -1824,6 +1834,7 @@
 				B6108F5D1D5D71D200C359A7 /* CustomAnnotationView.m in Sources */,
 				B6108FBC1D62C4E200C359A7 /* ScreenshotDetailViewController.m in Sources */,
 				C93634C31E03D3B6006F330F /* UIColor+Extension.m in Sources */,
+				C996A2391E1F38B400481DC7 /* TestViewController.m in Sources */,
 				C93634C21E03D3B6006F330F /* UILabel+ContentSize.m in Sources */,
 				B6108EEF1D5C899200C359A7 /* TransitDetailViewController.m in Sources */,
 				B6108F801D5DB1D200C359A7 /* AMEntrySelect6Controller.m in Sources */,
@@ -1860,6 +1871,7 @@
 				B6108EE91D5C899200C359A7 /* StepDetailViewController.m in Sources */,
 				5E48F91E1E0E0EA8004B9B68 /* SearchVC.m in Sources */,
 				B6108F071D5C899200C359A7 /* PoiSearchPerIdController.m in Sources */,
+				C996A23C1E1F3B6000481DC7 /* RoutePlanVC.m in Sources */,
 				B6108ED31D5C899200C359A7 /* AnnotationViewController.m in Sources */,
 				B6108EF01D5C899200C359A7 /* WalkingDetailViewController.m in Sources */,
 				B6108EEA1D5C899200C359A7 /* StreetNumberDetailViewController.m in Sources */,

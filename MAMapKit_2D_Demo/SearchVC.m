@@ -15,11 +15,12 @@
 #import "BusStopDetailViewController.h"
 #import "PoiDetailViewController.h"
 #import "TipDetailViewController.h"
+#import "RoutePlanVC.h"
 
 #define TipPlaceHolder @"名称"
 #define BusLinePaddingEdge 20
 
-@interface SearchVC ()<MAMapViewDelegate, AMapSearchDelegate, UITableViewDataSource, UITableViewDelegate,UITextViewDelegate>
+@interface SearchVC ()<AMapSearchDelegate, UITableViewDataSource, UITableViewDelegate,UITextViewDelegate>
 {
     UITextView *ideaField;
     
@@ -68,8 +69,25 @@
     
     [self initSearchView];
     
-    UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleReturn)];
+    UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideKeyBoard)];
+    
+    tap.delegate = self;
+    tap.numberOfTouchesRequired = 1;
     [self.view addGestureRecognizer:tap];
+    
+}
+
+#pragma mark - UIGestureRecognizerDelegate
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch
+{
+    // 输出点击的view的类名
+    NSLog(@"%@", NSStringFromClass([touch.view class]));
+    
+    // 若为UITableViewCellContentView（即点击了tableViewCell），则不截获Touch事件
+    if ([NSStringFromClass([touch.view class]) isEqualToString:@"UITableViewCellContentView"]) {
+        return NO;
+    }
+    return  YES;
 }
 
 #pragma mark - Initialization
@@ -187,7 +205,8 @@
     
     AMapInputTipsSearchRequest *tips = [[AMapInputTipsSearchRequest alloc] init];
     tips.keywords = key;
-    tips.city     = @"北京";
+    tips.city     = self.city;//@"北京";
+    NSLog(@"tips.city :%@", tips.city);
     //    tips.cityLimit = YES; 是否限制城市
     
     [self.search AMapInputTipsSearch:tips];
@@ -248,7 +267,9 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     AMapTip *tip = self.tips[indexPath.row];
-    
+    NSLog(@"%ld被点击了",indexPath.row);
+    [self gotoDetailForTip:tip];
+  
 }
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView{
     [ideaField resignFirstResponder];
@@ -280,7 +301,7 @@
     return cell;
 }
 //键盘响应
-- (void)handleReturn
+- (void)hideKeyBoard
 {
     [ideaField resignFirstResponder];
 }
@@ -289,13 +310,26 @@
 
 - (void)gotoDetailForTip:(AMapTip *)tip
 {
-    if (tip != nil)
+    
+    /* 目的地. */
+    AMapGeoPoint *destination = [AMapGeoPoint locationWithLatitude:tip.location.latitude
+                                                         longitude:tip.location.longitude];
+    
+    NSLog(@"destination:%@", tip.name);
+    
+    RoutePlanVC *VC = [[RoutePlanVC alloc]init];
+   // VC.startPoi = origin;
+    VC.destination = destination;
+    [self.navigationController pushViewController:VC animated:YES];
+    
+    
+    /*if (tip != nil)
     {
         TipDetailViewController *tipDetailViewController = [[TipDetailViewController alloc] init];
         tipDetailViewController.tip                      = tip;
         
         [self.navigationController pushViewController:tipDetailViewController animated:YES];
-    }
+    }*/
 }
 
 - (void)gotoDetailForBusStop:(AMapBusStop *)busStop
